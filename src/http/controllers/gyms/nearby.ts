@@ -22,6 +22,6 @@ export const nearby = async (request: FastifyRequest, reply: FastifyReply) => {
   })
 
   return reply.status(200).send({
-    ...gyms,
+    gyms,
   })
 }
