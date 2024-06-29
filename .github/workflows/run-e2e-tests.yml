@@ -9,13 +9,13 @@ jobs:
 
     services: 
       postgres: 
-      image: bitnami/postgresql
-      ports: 
-        - 5432:5432
-      environment: 
-        - POSTGRESQL_USERNAME=docker
-        - POSTGRESQL_PASSWORD=docker
-        - POSTGRESQL_DATABASE=apigym
+        image: bitnami/postgresql
+        ports: 
+          - 5432:5432
+        environment: 
+          - POSTGRESQL_USERNAME=docker
+          - POSTGRESQL_PASSWORD=docker
+          - POSTGRESQL_DATABASE=apigym
 
         
     steps:
@@ -31,4 +31,4 @@ jobs:
       - run: npm run test:e2e
         env: 
           JWT_SECRET: testing-secret
-          DATABASE_URL: 
+          DATABASE_URL: "postgresql://docker:docker@localhost:5432/apigym?schema=public"
